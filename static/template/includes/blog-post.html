@@ -1,0 +1,30 @@
+{% extends 'default.html'%}
+{% block content %}
+
+{% include 'header.html' %}
+<section class="list">
+{% for post in paginator %}
+    <div class="item {% if post.star %}star{% endif %}">
+        <a class="url">
+            <div class="side-by-side">
+                <div class="toleft">
+                    <img class="cover" src="/media/{{ post.title_image }}">
+                </div>
+
+                <div class="toright">
+                    <h3 class="title">{{ post.title }}</h3>
+                    <time datetime="{{ post.create_time | date:" Y-m" }}">{{ post.create_time | date:"Y-m" }}</time>
+                    <h3 class="desc">{{ post.desc | safe }}</h3>
+                    <button class="button" onclick="location.href=('/post/{{ post.title | slugify }}')">READ MORE</button>
+                </div>
+            </div>
+        </a>
+    </div>
+{% endfor %}
+</section>
+
+{% include 'pagination.html' %}
+
+{% include 'footer.html' %}
+
+{% endblock  %}

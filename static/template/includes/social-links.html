@@ -1,0 +1,43 @@
+<div class="social-links">
+    {% if site.facebook %}
+        <a class="link" data-title="facebook.com/{{ site.facebook }}" href="https://facebook.com/{{ site.facebook }}" target="_blank">
+            <i class="icon fab fa-facebook"></i>
+        </a>
+    {% endif %}
+
+    {% if site.twitter %}
+        <a class="link" data-title="twitter.com/{{ site.twitter }}" href="https://twitter.com/{{ site.twitter }}" target="_blank">
+            <i class="icon fab fa-twitter"></i>
+        </a>
+    {% endif %}
+
+    {% if site.instagram %}
+        <a class="link" data-title="instagram.com/{{ site.instagram }}" href="https://instagram.com/{{ site.instagram }}" target="_blank">
+            <i class="icon fab fa-instagram"></i>
+        </a>
+    {% endif %}
+
+    {% if site.linkedin %}
+        <a class="link" data-title="linkedin.com/in/{{ site.linkedin }}" href="https://www.linkedin.com/in/{{ site.linkedin }}" target="_blank">
+            <i class="icon fab fa-linkedin"></i>
+        </a>
+    {% endif %}
+
+    {% if site.github %}
+        <a class="link" data-title="github.com/{{ site.github }}" href="https://github.com/{{ site.github }}" target="_blank">
+            <i class="icon fab fa-github-alt"></i>
+        </a>
+    {% endif %}
+
+    {% if site.indienova %}
+    <a class="link" data-title="indienova.com/u/{{ site.indienova }}" href="https://indienova.com/u/{{ site.indienova }}" target="_blank">
+        <i class="icon fas fa-gamepad"></i>
+    </a>
+    {% endif %}
+
+    {% if site.email %}
+        <a class="link" data-title="{{ site.email }}" href="mailto:{{ site.email }}">
+            <i class="icon fas fa-envelope"></i>
+        </a>
+    {% endif %}
+</div>

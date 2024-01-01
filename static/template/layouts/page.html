@@ -1,0 +1,10 @@
+{% extends 'default.html'%}
+{% block content %}
+
+{% include 'header.html' %}
+
+{{ content | safe }}
+
+{% include 'footer.html' %}
+
+{% endblock  %}

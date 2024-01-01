@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load sass_tags %}
+<html lang="en">
+<head>
+    {% include 'analytics_google.html' %}
+
+    <meta charset="utf-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name=author content="{{ site.name }}">
+    <title>{{ page.shown_title }}</title>
+
+    {% include 'favicon.html' %}
+
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<!--    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}{{ "/feed.xml" }}" />-->
+
+    <link href="{% sass_src 'css/style.scss' %}" rel="stylesheet" type="text/css" />
+    <link href="/static/fontawesome/css/all.css" rel="stylesheet">
+<!--    <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>-->
+<!--    <script type="text/javascript">
+        $("head").append("<link>");
+        var css = $("head").children(":last");
+        css.attr({
+            rel:  "stylesheet",
+            type: "text/css",
+            href: "/static/css/icofont.min.css"
+        });
+    </script>
+    <link type="text/css" rel="stylesheet" href="/static/css/icofont.min.css">-->
+
+</head>
+<body>
+
+    <div class="wrapper-{% if site.width == 1 %}normal{% elif site.width == 2 %}large{% endif %}">
+        {% if page.tag %}
+            <div class="post">
+        {% else %}
+            {% if showHeader != true %}
+                <div class="page {{ page.title | lower }}">
+            {% else %}
+                <div class="{{ page.title | lower }}">
+            {% endif %}
+        {% endif %}
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    {% include 'icons.html' %}
+
+</body>
+</html>

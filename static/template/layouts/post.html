@@ -1,0 +1,54 @@
+{% extends 'default.html'%}
+{% block content %}
+
+{% include 'header.html' %}
+<div class="post">
+{% if page.title_image %}
+    <img class="title-image" src="/media/{{ page.title_image }}" alt="{{ page.title }}">
+{% endif %}
+
+<h1 class="title">{{ page.title }}</h1>
+
+<span class="date">
+    <time datetime="{{ page.date | date:"d-m-Y" }}">{{ page.date }}</time>
+    {% if site.read_time %} - {% include 'read_time.html' %}{% endif %}
+</span>
+
+{% if site.show_tags %}
+    <div class="post-tags">
+        {% for tag in page.tags.all %}
+            <a class="item" href="/tags/{{ tag | slugify }}">{{ tag }}</a>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{{content | safe }}
+
+{% if site.post_advance_links %}
+    <div class="blog-navigation">
+        {% if page.previous.hidden == false and page.previous.url %}
+            <a class="prev" href="{{ site.url }}{{ page.previous.url }}">&laquo; {{ page.previous.title }}</a>
+        {% else %}
+            <a class="prev"></a>
+        {% endif %}
+        {% if page.next.hidden == false and page.next.url %}
+            <a class="next" href="{{ site.url }}{{ page.next.url }}">{{ page.next.title }} &raquo;</a>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% if site.related %}
+    {% include 'related.html' %}
+{% endif %}
+
+{% if site.show_author %}
+    {% include 'author.html' %}
+{% endif %}
+
+{% if page.category in site.disqus.categories %}
+    {% include 'disqus.html' %}
+{% endif %}
+
+{% include 'footer.html' %}
+</div>
+{% endblock  %}
